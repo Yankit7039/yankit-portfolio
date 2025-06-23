@@ -1,6 +1,7 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, Suspense } from "react"
+import dynamic from "next/dynamic"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Navigation from "./components/Navigation"
 import Hero from "./components/Hero"
@@ -11,6 +12,12 @@ import Skills from "./components/Skills"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 import Achievements from "./components/Achievements"
+
+// Dynamically import the Three.js scene component
+const ThreeScene = dynamic(() => import("./components/ThreeScene"), { 
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-gradient-to-br from-blue-400/20 via-cyan-400/20 to-blue-600/20" />
+})
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -25,9 +32,16 @@ export default function Home() {
     <div ref={containerRef} className="relative">
       {/* Animated Background */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-slate-900 to-cyan-900 animate-pulse" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)] animate-spin-slow" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(6,182,212,0.1),transparent_50%)] animate-bounce-slow" />
+        <div className="absolute inset-0 bg-black animate-pulse" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(96,165,250,0.1),transparent_50%)] animate-spin-slow" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.1),transparent_50%)] animate-bounce-slow" />
+      </div>
+
+      {/* Three.js Background */}
+      <div className="fixed inset-0 -z-5">
+        <Suspense fallback={<div className="w-full h-full bg-black" />}>
+          <ThreeScene />
+        </Suspense>
       </div>
 
       {/* Animated Background Gradient */}
