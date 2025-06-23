@@ -51,7 +51,7 @@ export default function Hero() {
                 onClick={() => {
                   // Create a downloadable resume
                   const link = document.createElement("a")
-                  link.href = "/Resume0625.pdf" // You'll need to add your resume PDF to the public folder
+                  link.href = "/Resume0625U.pdf" // You'll need to add your resume PDF to the public folder
                   // link.download = "Yankit_Rajor_Resume.pdf"
                   link.click()
                 }}

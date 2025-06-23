@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     "Full Stack Developer and Data Science student specializing in MERN stack, IoT solutions, and intelligent web applications. LeetCode rating: 1513.",
   keywords: "Full Stack Developer, MERN Stack, Data Science, React, Node.js, IoT, Machine Learning, Portfolio",
   authors: [{ name: "Yankit Rajor" }],
+  icons: {
+    icon: '/letter-y.png',
+    shortcut: '/letter-y.png',
+    apple: '/letter-y.png'
+  },
   openGraph: {
     title: "Yankit Rajor - Full Stack Developer & Data Science Student",
     description: "Full Stack Developer specializing in MERN stack, IoT solutions, and intelligent web applications.",
