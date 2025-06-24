@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { Award, Code, Trophy, Users } from "lucide-react"
+import ParticleField from "./ParticleField"
 
 const achievements = [
   {
@@ -37,7 +38,22 @@ export default function Achievements() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section className="py-20 relative">
+    <section className="py-20 relative overflow-hidden">
+      {/* ParticleField Background - Floating Achievement Badges */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <ParticleField 
+          particleCount={150}
+          particleSpread={8}
+          speed={0.15}
+          particleColors={["#ffffff", "#ffffff", "#ffffff"]}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          particleBaseSize={80}
+          sizeRandomness={0.8}
+          cameraDistance={15}
+          disableRotation={false}
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

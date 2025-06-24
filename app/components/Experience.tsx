@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { MapPin } from "lucide-react"
+import Orb from "./Orb"
 
 const experiences = [
   {
@@ -41,7 +42,13 @@ export default function Experience() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="experience" className="py-20 relative">
+    <section id="experience" className="py-20 relative overflow-hidden">
+      {/* Orb Centered Background */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 flex items-center justify-center w-full h-full">
+        <div style={{ width: "60vw", height: "60vw", maxWidth: 800, maxHeight: 800 }}>
+          <Orb hoverIntensity={0.5} rotateOnHover={true} hue={220} forceHoverState={false} />
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

@@ -6,6 +6,7 @@ import { useRef, useState } from "react"
 import { ExternalLink, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { BackgroundLines } from "./BackgroundLines"
 
 const projects = [
   // {
@@ -36,7 +37,7 @@ const projects = [
     description:
     "Pizza Management App built with React Native, Expo, and TypeScript, featuring a modern UI and seamless navigation for managing pizza orders.",
     image: "/Screenshot 2025-06-23 at 1.35.49 PM.png",
-    tags: ["React Native", "Expo", "TypeScript", "React Navigation", "React Native Paper"],
+    tags: ["NextJS", "MongoDB", "TypeScript", "TailwindCSS"],
     liveUrl: "https://pizza-management-99kz.vercel.app/",
     githubUrl: "https://github.com/Yankit7039/pizza-management.git",
     featured: false,
@@ -100,8 +101,16 @@ export default function Projects() {
         : projects.filter((p) => !p.featured)
 
   return (
-    <section id="projects" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 relative overflow-hidden">
+      {/* BackgroundLines as background element */}
+      <div className="absolute inset-0 -z-10">
+        <BackgroundLines 
+          className="w-full h-full bg-transparent" 
+          svgOptions={{ duration: 8 }}
+        />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}

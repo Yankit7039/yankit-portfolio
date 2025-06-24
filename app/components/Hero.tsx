@@ -1,9 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Mail, Code, Database, Brain } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import CardSwap, { Card } from "./CardSwap"
+import Aurora from "./Aurora"
 
 export default function Hero() {
   const scrollToAbout = () => {
@@ -11,7 +13,17 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* WebGL Aurora Background */}
+      <div className="absolute inset-0 -z-10">
+        <Aurora
+          colorStops={["#1e40af", "#3b82f6", "#06b6d4"]}
+          blend={0.6}
+          amplitude={1.2}
+          speed={0.6}
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
@@ -97,7 +109,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 mx-auto order-1 lg:order-2"
+            className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 mx-auto order-1 lg:order-2 block lg:hidden"
           >
             {/* bg-gradient-to-br from-blue-500/30 to-cyan-500/30 */}
             <div className="absolute inset-0 rounded-full animate-pulse-glow" />
@@ -110,6 +122,181 @@ export default function Hero() {
               priority
             />
           </motion.div>
+        </div>
+      </div>
+
+      {/* CardSwap Component - Skills Showcase (Desktop only) */}
+      <div className="hidden md:block">
+        <div className="fixed lg:absolute bottom-4 right-4 left-0 lg:left-auto flex justify-center lg:justify-end z-20 pointer-events-none">
+          <div className="w-[90vw] max-w-xs sm:max-w-sm md:max-w-md lg:w-80 lg:h-60 pointer-events-auto">
+            <CardSwap
+              cardDistance={60}
+              verticalDistance={70}
+              delay={4000}
+              pauseOnHover={true}
+              easing="elastic"
+            >
+              {/* Card 1: Developer Info */}
+              <Card className="relative overflow-hidden p-0 bg-transparent border-none shadow-none w-full h-full">
+                <div className="relative w-full h-full bg-gradient-to-br from-slate-900/90 to-slate-800/90 rounded-2xl overflow-hidden border border-slate-700/50 backdrop-blur-md shadow-2xl">
+                  <div className="absolute top-0 left-0 right-0 h-8 bg-slate-800/95 border-b border-slate-700/50 flex items-center px-4">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500/70"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-500/70"></div>
+                    </div>
+                    <div className="ml-4 text-xs text-slate-400 font-mono">portfolio.tsx</div>
+                  </div>
+                  <div className="absolute inset-0 pt-10 px-4 pb-4">
+                    <div className="h-full flex flex-col space-y-2">
+                      <div className="flex text-xs text-slate-500 font-mono">
+                        {[...Array(10)].map((_, i) => (
+                          <div key={i} className="w-8 flex-shrink-0">{i + 1}</div>
+                        ))}
+                      </div>
+                      <div className="flex-1 font-mono text-sm leading-relaxed">
+                        <div className="flex">
+                          <span className="text-slate-400">const</span>
+                          <span className="text-white ml-2">developer</span>
+                          <span className="text-slate-400 ml-2">=</span>
+                          <span className="text-blue-400 ml-2">{'{'}</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">name</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-yellow-400 ml-2">'Yankit Rajor'</span>
+                          <span className="text-slate-400">,</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">role</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-yellow-400 ml-2">'Full Stack Developer'</span>
+                          <span className="text-slate-400">,</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">specialization</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-yellow-400 ml-2">'MERN Stack & Data Science'</span>
+                          <span className="text-slate-400">,</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">skills</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-blue-400 ml-2">['React', 'Node.js', 'Python', 'ML']</span>
+                        </div>
+                        <div className="flex">
+                          <span className="text-blue-400">{'}'}</span>
+                          <span className="text-slate-400">;</span>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-8 left-12 w-0.5 h-5 bg-green-400 animate-pulse" />
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-transparent to-cyan-500/10 pointer-events-none" />
+                </div>
+              </Card>
+              {/* Card 2: Project Info */}
+              <Card className="relative overflow-hidden p-0 bg-transparent border-none shadow-none w-full h-full">
+                <div className="relative w-full h-full bg-gradient-to-br from-slate-900/90 to-slate-800/90 rounded-2xl overflow-hidden border border-slate-700/50 backdrop-blur-md shadow-2xl">
+                  <div className="absolute top-0 left-0 right-0 h-8 bg-slate-800/95 border-b border-slate-700/50 flex items-center px-4">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500/70"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-500/70"></div>
+                    </div>
+                    <div className="ml-4 text-xs text-slate-400 font-mono">portfolio.tsx</div>
+                  </div>
+                  <div className="absolute inset-0 pt-10 px-4 pb-4">
+                    <div className="h-full flex flex-col space-y-2">
+                      <div className="flex text-xs text-slate-500 font-mono">
+                        {[...Array(10)].map((_, i) => (
+                          <div key={i} className="w-8 flex-shrink-0">{i + 1}</div>
+                        ))}
+                      </div>
+                      <div className="flex-1 font-mono text-sm leading-relaxed">
+                        <div className="flex">
+                          <span className="text-slate-400">const</span>
+                          <span className="text-white ml-2">project</span>
+                          <span className="text-slate-400 ml-2">=</span>
+                          <span className="text-blue-400 ml-2">{'{'}</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">name</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-yellow-400 ml-2">'SmartSoil IoT'</span>
+                          <span className="text-slate-400">,</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">stack</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-blue-400 ml-2">['ESP8266', 'Python', 'Arduino']</span>
+                          <span className="text-slate-400">,</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">achievement</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-yellow-400 ml-2">'40% Water Savings'</span>
+                        </div>
+                        <div className="flex">
+                          <span className="text-blue-400">{'}'}</span>
+                          <span className="text-slate-400">;</span>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-8 left-12 w-0.5 h-5 bg-green-400 animate-pulse" />
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-transparent to-cyan-500/10 pointer-events-none" />
+                </div>
+              </Card>
+              {/* Card 3: Achievement Info */}
+              <Card className="relative overflow-hidden p-0 bg-transparent border-none shadow-none w-full h-full">
+                <div className="relative w-full h-full bg-gradient-to-br from-slate-900/90 to-slate-800/90 rounded-2xl overflow-hidden border border-slate-700/50 backdrop-blur-md shadow-2xl">
+                  <div className="absolute top-0 left-0 right-0 h-8 bg-slate-800/95 border-b border-slate-700/50 flex items-center px-4">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500/70"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-500/70"></div>
+                    </div>
+                    <div className="ml-4 text-xs text-slate-400 font-mono">portfolio.tsx</div>
+                  </div>
+                  <div className="absolute inset-0 pt-10 px-4 pb-4">
+                    <div className="h-full flex flex-col space-y-2">
+                      <div className="flex text-xs text-slate-500 font-mono">
+                        {[...Array(10)].map((_, i) => (
+                          <div key={i} className="w-8 flex-shrink-0">{i + 1}</div>
+                        ))}
+                      </div>
+                      <div className="flex-1 font-mono text-sm leading-relaxed">
+                        <div className="flex">
+                          <span className="text-slate-400">const</span>
+                          <span className="text-white ml-2">achievement</span>
+                          <span className="text-slate-400 ml-2">=</span>
+                          <span className="text-blue-400 ml-2">{'{'}</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">title</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-yellow-400 ml-2">'LeetCode: 1513'</span>
+                          <span className="text-slate-400">,</span>
+                        </div>
+                        <div className="flex ml-4">
+                          <span className="text-green-400">problemsSolved</span>
+                          <span className="text-slate-400">:</span>
+                          <span className="text-blue-400 ml-2">700</span>
+                        </div>
+                        <div className="flex">
+                          <span className="text-blue-400">{'}'}</span>
+                          <span className="text-slate-400">;</span>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-8 left-12 w-0.5 h-5 bg-green-400 animate-pulse" />
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-transparent to-cyan-500/10 pointer-events-none" />
+                </div>
+              </Card>
+            </CardSwap>
+          </div>
         </div>
       </div>
     </section>

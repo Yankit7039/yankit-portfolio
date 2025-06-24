@@ -5,14 +5,28 @@ import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Ballpit from "./Ballpit"
 
 export default function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="about" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 relative overflow-hidden">
+      {/* Ballpit Background */}
+      <div className="absolute inset-0 -z-10">
+        <div style={{position: 'relative', overflow: 'hidden', height: '100%', width: '100%'}}>
+          <Ballpit
+            count={200}
+            gravity={0.7}
+            friction={0.8}
+            wallBounce={0.95}
+            followCursor={true}
+          />
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -32,26 +46,26 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+            <div className="bg-black/70 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
+              <p className="text-white text-lg leading-relaxed mb-6">
                 I'm a passionate Full Stack Developer and Data Science student at Netaji Subhas University of Technology
                 with expertise in the MERN stack and IoT solutions. I specialize in creating intelligent web
                 applications and have solved 700+ DSA problems with a LeetCode rating of 1513.
               </p>
 
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              <p className="text-white text-lg leading-relaxed mb-6">
                 My approach combines modern web technologies with data science principles to deliver solutions that are
                 not only functional but also intelligent and scalable.
               </p>
 
               <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="text-center p-4 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg">
-                  <div className="text-2xl font-bold text-white">10+</div>
-                  <div className="text-gray-400">Projects</div>
+                <div className="text-center p-4 bg-gradient-to-br from-blue-500/40 to-cyan-500/40 rounded-lg border border-white/20 backdrop-blur-sm">
+                  <div className="text-2xl font-bold text-white">15+</div>
+                  <div className="text-white/90">Projects</div>
                 </div>
-                <div className="text-center p-4 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg">
+                <div className="text-center p-4 bg-gradient-to-br from-blue-500/40 to-cyan-500/40 rounded-lg border border-white/20 backdrop-blur-sm">
                   <div className="text-2xl font-bold text-white">2+</div>
-                  <div className="text-gray-400">Years Learning</div>
+                  <div className="text-white/90">Years Learning</div>
                 </div>
               </div>
 
@@ -80,9 +94,9 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="relative w-full h-96 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl overflow-hidden border border-slate-700/50">
+            <div className="relative w-full h-96 bg-gradient-to-br from-slate-900/90 to-slate-800/90 rounded-2xl overflow-hidden border border-slate-700/50 backdrop-blur-md shadow-2xl">
               {/* Code Editor Header */}
-              <div className="absolute top-0 left-0 right-0 h-8 bg-slate-800/90 border-b border-slate-700/50 flex items-center px-4">
+              <div className="absolute top-0 left-0 right-0 h-8 bg-slate-800/95 border-b border-slate-700/50 flex items-center px-4">
                 <div className="flex space-x-2">
                   <div className="w-3 h-3 rounded-full bg-red-500/70"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500/70"></div>
@@ -155,7 +169,7 @@ export default function About() {
               </div>
 
               {/* Subtle glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-cyan-500/5 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-transparent to-cyan-500/10 pointer-events-none" />
             </div>
           </motion.div>
         </div>
