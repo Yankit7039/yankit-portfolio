@@ -173,13 +173,13 @@ function SkillsConstellation() {
   
   const skills = [
     { name: "", level: 90, position: [0, 0, 0], color: "#61DAFB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "", level: 85, position: [3, 1, 0], color: "#339933", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-    { name: "", level: 88, position: [-3, 1, 0], color: "#3776AB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-    { name: "", level: 80, position: [2, -2, 0], color: "#47A248", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-    { name: "", level: 85, position: [-2, -2, 0], color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-    { name: "", level: 70, position: [4, -1, 0], color: "#009688", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
-    { name: "", level: 85, position: [0, 2, 0], color: "#F7DF1E", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "", level: 80, position: [-4, -1, 0], color: "#F05032", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" }
+    { name: "", level: 85, position: [2.5, 0.8, 0], color: "#339933", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "", level: 88, position: [-2.5, 0.8, 0], color: "#3776AB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { name: "", level: 80, position: [1.8, -1.5, 0], color: "#47A248", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+    { name: "", level: 85, position: [-1.8, -1.5, 0], color: "#000000", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "", level: 70, position: [3, -0.8, 0], color: "#009688", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+    { name: "", level: 85, position: [0, 1.5, 0], color: "#F7DF1E", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "", level: 80, position: [-3, -0.8, 0], color: "#F05032", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" }
   ]
 
   useFrame((state) => {
@@ -205,7 +205,7 @@ function SkillsConstellation() {
         <Float key={skill.name} speed={1 + i * 0.1} rotationIntensity={0.5} floatIntensity={1.5}>
           <group position={skill.position}>
             <mesh>
-              <sphereGeometry args={[0.3 + skill.level * 0.005, 32, 32]} />
+              <sphereGeometry args={[0.25 + skill.level * 0.003, 32, 32]} />
               <meshStandardMaterial 
                 color={skill.color}
                 transparent 
@@ -217,22 +217,21 @@ function SkillsConstellation() {
               />
             </mesh>
             
-            <Html position={[0, -0.6, 0] as [number, number, number]} center>
+            <Html position={[0, -0.5, 0] as [number, number, number]} center>
               <div className="text-white text-xs font-bold bg-black/70 px-2 py-1 rounded backdrop-blur-sm">
-                <div className="w-8 h-8 mb-1 flex items-center justify-center">
+                <div className="w-6 h-6 mb-1 flex items-center justify-center">
                   <img 
                     src={skill.logo} 
                     alt={skill.name}
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                   />
                 </div>
-                <div className="text-xs">{skill.name}</div>
               </div>
             </Html>
             
             {/* Skill level ring */}
             <mesh rotation={[Math.PI / 2, 0, 0]}>
-              <ringGeometry args={[0.4, 0.45, 32]} />
+              <ringGeometry args={[0.35, 0.4, 32]} />
               <meshBasicMaterial 
                 color={skill.color} 
                 transparent 
@@ -377,11 +376,11 @@ function ProjectShowcase({ position }: { position: [number, number, number] }) {
 // Achievement Badges
 function AchievementBadges() {
   const badges = [
-    { text: "AI Certified", position: [-6, 3, 0], color: "#FF6B6B", icon: "🤖" },
-    { text: "ML Expert", position: [6, 3, 0], color: "#4ECDC4", icon: "🧠" },
+    { text: "AI Certified", position: [-4, 2, 0], color: "#FF6B6B", icon: "🤖" },
+    { text: "ML Expert", position: [4, 2, 0], color: "#4ECDC4", icon: "🧠" },
     // { text: "IEEE Senior", position: [-6, -3, 0], color: "#45B7D1", icon: "⚡" },
     // { text: "MOKSHA Lead", position: [6, -3, 0], color: "#FFD700", icon: "🎪" },
-    { text: "700+ DSA", position: [0, 5, 0], color: "#9C27B0", icon: "💎" }
+    { text: "700+ DSA", position: [0, 3, 0], color: "#9C27B0", icon: "💎" }
   ]
 
   return (
@@ -390,7 +389,7 @@ function AchievementBadges() {
         <Float key={i} speed={1.5 + i * 0.2} rotationIntensity={0.8} floatIntensity={2}>
           <group position={badge.position}>
             <mesh>
-              <cylinderGeometry args={[0.8, 0.8, 0.1, 8]} />
+              <cylinderGeometry args={[0.6, 0.6, 0.1, 8]} />
               <meshStandardMaterial 
                 color={badge.color}
                 transparent 
@@ -404,7 +403,7 @@ function AchievementBadges() {
             
             <Html position={[0, 0, 0.06]} transform>
               <div className="text-center bg-black/70 backdrop-blur-sm rounded-lg p-2">
-                <div className="text-2xl mb-1">{badge.icon}</div>
+                <div className="text-xl mb-1">{badge.icon}</div>
                 <div className="text-white text-xs font-bold">{badge.text}</div>
               </div>
             </Html>
@@ -489,10 +488,10 @@ function EnhancedPortfolioScene() {
       <SkillsConstellation />
       
       {/* Live Code Terminal */}
-      <LiveCodeTerminal position={[0, -6, 0]} />
+      <LiveCodeTerminal position={[0, -4, 0]} />
       
       {/* Project Showcase */}
-      <ProjectShowcase position={[0, 6, 0]} />
+      <ProjectShowcase position={[0, 4, 0]} />
       
       {/* Achievement Badges */}
       <AchievementBadges />
@@ -526,7 +525,7 @@ function EnhancedPortfolioScene() {
 export default function ThreeScene() {
   return (
     <Canvas 
-      camera={{ position: [0, 0, 15], fov: 75 }}
+      camera={{ position: [0, 0, 20], fov: 60 }}
       style={{ background: 'transparent' }}
       gl={{ 
         antialias: true, 
@@ -558,8 +557,8 @@ export default function ThreeScene() {
         autoRotateSpeed={0.3}
         maxPolarAngle={Math.PI / 1.5}
         minPolarAngle={Math.PI / 4}
-        maxDistance={25}
-        minDistance={10}
+        maxDistance={30}
+        minDistance={15}
         dampingFactor={0.05}
         rotateSpeed={0.5}
         zoomSpeed={0.8}
