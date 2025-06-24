@@ -80,23 +80,82 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="relative w-full h-96 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 backdrop-blur-sm"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-6xl">👨‍💻</div>
+            <div className="relative w-full h-96 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl overflow-hidden border border-slate-700/50">
+              {/* Code Editor Header */}
+              <div className="absolute top-0 left-0 right-0 h-8 bg-slate-800/90 border-b border-slate-700/50 flex items-center px-4">
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/70"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500/70"></div>
+                </div>
+                <div className="ml-4 text-xs text-slate-400 font-mono">portfolio.tsx</div>
               </div>
 
-              {/* Floating elements */}
-              <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-                className="absolute top-4 right-4 w-16 h-16 bg-blue-500/30 rounded-full backdrop-blur-sm"
-              />
-              <motion.div
-                animate={{ y: [0, 20, 0] }}
-                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
-                className="absolute bottom-4 left-4 w-12 h-12 bg-pink-500/30 rounded-full backdrop-blur-sm"
-              />
+              {/* Code Content */}
+              <div className="absolute inset-0 pt-10 px-4 pb-4">
+                <div className="h-full flex flex-col space-y-2">
+                  {/* Line numbers */}
+                  <div className="flex text-xs text-slate-500 font-mono">
+                    <div className="w-8 flex-shrink-0">1</div>
+                    <div className="w-8 flex-shrink-0">2</div>
+                    <div className="w-8 flex-shrink-0">3</div>
+                    <div className="w-8 flex-shrink-0">4</div>
+                    <div className="w-8 flex-shrink-0">5</div>
+                    <div className="w-8 flex-shrink-0">6</div>
+                    <div className="w-8 flex-shrink-0">7</div>
+                    <div className="w-8 flex-shrink-0">8</div>
+                    <div className="w-8 flex-shrink-0">9</div>
+                    <div className="w-8 flex-shrink-0">10</div>
+                  </div>
+
+                  {/* Code lines */}
+                  <div className="flex-1 font-mono text-sm leading-relaxed">
+                    <div className="flex">
+                      <span className="text-slate-400">const</span>
+                      <span className="text-white ml-2">developer</span>
+                      <span className="text-slate-400 ml-2">=</span>
+                      <span className="text-blue-400 ml-2">{'{'}</span>
+                    </div>
+                    <div className="flex ml-4">
+                      <span className="text-green-400">name</span>
+                      <span className="text-slate-400">:</span>
+                      <span className="text-yellow-400 ml-2">'Yankit Rajor'</span>
+                      <span className="text-slate-400">,</span>
+                    </div>
+                    <div className="flex ml-4">
+                      <span className="text-green-400">role</span>
+                      <span className="text-slate-400">:</span>
+                      <span className="text-yellow-400 ml-2">'Full Stack Developer'</span>
+                      <span className="text-slate-400">,</span>
+                    </div>
+                    <div className="flex ml-4">
+                      <span className="text-green-400">specialization</span>
+                      <span className="text-slate-400">:</span>
+                      <span className="text-yellow-400 ml-2">'MERN Stack & Data Science'</span>
+                      <span className="text-slate-400">,</span>
+                    </div>
+                    <div className="flex ml-4">
+                      <span className="text-green-400">skills</span>
+                      <span className="text-slate-400">:</span>
+                      <span className="text-blue-400 ml-2">['React', 'Node.js', 'Python', 'ML']</span>
+                    </div>
+                    <div className="flex">
+                      <span className="text-blue-400">{'}'}</span>
+                      <span className="text-slate-400">;</span>
+                    </div>
+                  </div>
+
+                  {/* Cursor blink effect */}
+                  <motion.div
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                    className="absolute bottom-8 left-12 w-0.5 h-5 bg-green-400"
+                  />
+                </div>
+              </div>
+
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-cyan-500/5 pointer-events-none" />
             </div>
           </motion.div>
         </div>
